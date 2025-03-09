@@ -35,7 +35,7 @@ addopts = '-p no:warnings'
 [tool.taskipy.tasks]
 lint = 'uv run ruff check'
 pre_format = 'uv run ruff check --fix'
-format = 'ruv run ruff format'
+format = 'uv run ruff format'
 run = 'uv run fastapi dev fast_zero/app.py'
 pre_test = 'uv run task lint'
 test = 'uv run pytest -s -x --cov=fast_zero -vv'
