@@ -27,6 +27,15 @@ def read_users():
     return {'users': database}
 
 
+@app.get('/users/{user_id}', response_model=UserPublic)
+def read_user(user_id: int):
+    if user_id > len(database) or user_id < 1:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail='User not found'
+        )
+    return database[user_id - 1]
+
+
 @app.get('/')
 def read_root():
     return {'menssage': 'Olá Mundo!'}
